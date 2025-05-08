@@ -3,7 +3,7 @@
 import FloatingCan from "@/components/FloatingCan";
 import { Environment } from "@react-three/drei";
 import { useRef } from "react";
-import { Group } from "three";
+import { AmbientLight, Group } from "three";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -132,6 +132,7 @@ const Scene = (props: Props) => {
         floatSpeed={FLOAT_SPEED}
       />
       <FloatingCan ref={can5Ref} flavor="watermelon" floatSpeed={FLOAT_SPEED} />
+      <ambientLight intensity={3} />
       <Environment files="/hdr/lobby.hdr" backgroundIntensity={1.5} />
     </group>
   );
