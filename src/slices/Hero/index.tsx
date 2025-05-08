@@ -15,6 +15,7 @@ import { TextSplitter } from "@/components/TextSplitter";
 import { View } from "@react-three/drei";
 import Scene from "./Scene";
 import { Bubbles } from "./Bubbles";
+import { useStore } from "@/Hooks/UseStore";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -28,7 +29,11 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero: FC<HeroProps> = ({ slice }) => {
 
+  const ready = useStore((state) => state.ready);
+
   useGSAP(() => {
+    if (!ready) return;
+
     const introTl = gsap.timeline();
     
     introTl
@@ -78,17 +83,17 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       ease: "back.out(3)",
       duration: .5,
     });
-  })
+  }, {dependencies: [ready]});
 
   return (
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="ooopacity-0 hero"
+      className="opacity-0 hero"
     >
-      <View className="hero-scene pointer-events-none sticky top-0 z-50 -mt-[100vh] hhhidden h-screen w-screen md:block">
+      <View className="hero-scene pointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
         <Scene />
-        <Bubbles count={300} speed={1} repeat={true} />
+        <Bubbles count={300} speed={0.5} repeat={true} />
       </View>
       <div className="grid">
         <div className="grid h-screen place-items-center">
