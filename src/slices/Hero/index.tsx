@@ -36,7 +36,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       scale: 3,
       opacity: 0,
       ease: "power3.in",
-      delay: .3,
+      delay: .5,
       stagger: .5,
     })
     .from(".hero-subheading", {
@@ -83,9 +83,9 @@ const Hero: FC<HeroProps> = ({ slice }) => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="opacity-0 hero"
+      className="ooopacity-0 hero"
     >
-      <View className="hero-scene pointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
+      <View className="hero-scene pointer-events-none sticky top-0 z-50 -mt-[100vh] hhhidden h-screen w-screen md:block">
         <Scene />
       </View>
       <div className="grid">
