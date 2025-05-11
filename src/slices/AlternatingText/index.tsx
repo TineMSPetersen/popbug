@@ -1,11 +1,16 @@
 "use client";
 
-import { FC } from "react";
-import { asText, Content } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Bounded } from "@/components/Bounded";
-import Scene from "./Scene";
+import { asText, Content } from "@prismicio/client";
+import {
+  PrismicRichText,
+  PrismicText,
+  SliceComponentProps,
+} from "@prismicio/react";
 import { View } from "@react-three/drei";
+import Scene from "./Scene";
+import clsx from "clsx";
+import { JSX } from "react";
 
 /**
  * Props for `AlternatingText`.
@@ -16,34 +21,37 @@ export type AlternatingTextProps =
 /**
  * Component for "AlternatingText" Slices.
  */
-const AlternatingText: FC<AlternatingTextProps> = ({ slice }) => {
+const AlternatingText = ({ slice }: AlternatingTextProps): JSX.Element => {
   return (
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative alternating-text-container text-sky-950"
+      className="relative bg-yellow-300 alternating-text-container text-sky-950"
     >
       <div>
-        <div className="relative grid">
+        <div className="relative z-[100] grid">
           <View className="absolute top-0 left-0 w-full h-screen alternating-text-view">
             <Scene />
           </View>
-          
-          
+
           {slice.primary.text_group.map((item, index) => (
             <div
               key={asText(item.heading)}
-              className="grid h-screen alternating-section placeitems-center gap-x-12 md:grid-cols-2"
+              className="grid h-screen alternating-section place-items-center gap-x-12 md:grid-cols-2"
             >
-              <div className={index % 2 === 0 ? "col-start-1" : "col-start-2"}>
+              <div
+                className={clsx(
+                  index % 2 === 0 ? "col-start-1" : "md:col-start-2",
+
+                  "rounded-lg p-4 backdrop-blur-lg max-md:bg-white/30",
+                )}
+              >
                 <h2 className="text-6xl font-bold text-balance">
-                  {asText(item.heading)}
+                  <PrismicText field={item.heading} />
                 </h2>
                 <div className="mt-4 text-xl">
                   <PrismicRichText field={item.body} />
                 </div>
-                
-                
               </div>
             </div>
           ))}
