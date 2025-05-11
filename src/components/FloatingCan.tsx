@@ -11,7 +11,6 @@ type floatingCanProps = {
   floatIntensity?: number;
   rotationIntensity?: number;
   floatingRange?: [number, number];
-  children?: React.ReactNode;
 }
 
 const FloatingCan = forwardRef<Group, floatingCanProps>(({
@@ -20,7 +19,6 @@ const FloatingCan = forwardRef<Group, floatingCanProps>(({
   floatIntensity = 1,
   rotationIntensity = 1,
   floatingRange = [-0.1, 0.1],
-  children,
 ...props}, ref) => {
   return (
     <group ref={ref} {...props}>
