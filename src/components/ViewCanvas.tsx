@@ -8,9 +8,7 @@ import dynamic from "next/dynamic";
 
 const Loader = dynamic(() => import("@react-three/drei").then((mod) => mod.Loader), {ssr: false})
 
-type Props = {};
-
-function ViewCanvas({}: Props) {
+function ViewCanvas() {
   return (
     <>
       <Canvas

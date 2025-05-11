@@ -2,9 +2,7 @@ import React from 'react'
 import { FizziLogo } from './FizziLogo'
 import CircleText from './CircleText'
 
-type Props = {}
-
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <footer className='bg-[#FEE832] text-[#FE6334]'>
       <div className='relative flex justify-center w-full max-w-4xl px-4 py-10 mx-auto'>

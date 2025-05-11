@@ -3,7 +3,7 @@
 import FloatingCan from "@/components/FloatingCan";
 import { Environment } from "@react-three/drei";
 import { useRef } from "react";
-import { AmbientLight, Group } from "three";
+import { Group } from "three";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,9 +11,7 @@ import { useStore } from "@/Hooks/UseStore";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-type Props = {};
-
-const Scene = (props: Props) => {
+const Scene = () => {
   const isReady = useStore((state) => state.isReady);
 
   const can1Ref = useRef<Group>(null);

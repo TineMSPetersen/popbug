@@ -1,6 +1,6 @@
 "use client"
 
-import { Environment, Float } from '@react-three/drei'
+import { Float } from '@react-three/drei'
 import { SodaCan, SodaCanProps } from './SodaCan'
 import { forwardRef } from 'react'
 import { Group } from 'three'
